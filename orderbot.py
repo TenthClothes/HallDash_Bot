@@ -17,7 +17,6 @@ CREDS = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", SCO
 client = gspread.authorize(CREDS)
 sheet = client.open("HallDash Orders").sheet1
 
-# Canva menu image (your uploaded image URL)
 MENU_IMAGE_URL = "Menu.png"
 
 # Menu items and prices
@@ -71,7 +70,7 @@ async def order(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parse_mode="Markdown"
     )
 
-    # Inline button menu
+    # Menu Buttons
     buttons = [
         [InlineKeyboardButton(f"{item} — ${price}", callback_data=item)]
         for item, price in ITEMS.items()
